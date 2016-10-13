@@ -9,6 +9,14 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', [ '$scope', 'dataService', function($scope, dataService) {
+
+	$scope.bodyparts = {};
+
+	var promise = dataService.getData();
+	promise.then(function(data) {
+	    $scope.bodyparts = data;
+	    log(data)
+	});
 
 }]);

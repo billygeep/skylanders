@@ -23,3 +23,27 @@
   content: "|";
   padding-right: 0.3em;
 }
+
+
+
+
+.container {
+	width:960px;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+#sl-character-container {
+	width:500px;
+	height:500px;
+	background-color: #f1f1f1;
+}
+
+.sl-bodypart {
+	background-size: 100%;
+	position: absolute;
+}
