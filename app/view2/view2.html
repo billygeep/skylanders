@@ -2,17 +2,20 @@
 
 <div id="sl-display-container" ng-controller="DisplayController">
 	<div id="sl-display-artboard">
-		<div body-part draggable ng-repeat="limb in bodyparts.limbs" class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
+		<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
 	</div>
 
 	<div class="sl-button"  ng-click="createCharacter()">SAVE</div>
 	<div class="sl-button"  ng-click="removeBodypart()">REMOVE</div>
+	<div class="sl-button"  ng-click="changeLayer()">LAYER</div>
+	<div class="sl-button-small"  ng-click="rotatePart(-2)">Rot L</div>
+	<div class="sl-button-small"  ng-click="rotatePart(2)">Rot R</div>
 </div>
 
 
 <div id="sl-menu-container" ng-controller="MenuController">
 	<div class="sl-menu-row">
-		<div ng-repeat="button in menudata.buttondata" class="sl-menu-button" ng-click="changeMenu(button.limbarray)"></div>
+		<div ng-repeat="button in menudata.buttondata track by $index" class="sl-menu-button" ng-class=" { 'sl-menu-button-active' : menudata.selected == $index } " ng-click="changeMenu(button.limbarray, $index)"></div>
 	</div>
 
 	<div class="sl-menu-row">

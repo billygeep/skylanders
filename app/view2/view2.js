@@ -5,7 +5,7 @@ myApp.controller('View2Ctrl', [ '$scope', '$timeout', 'dataService', function($s
 }]);
 
 
-myApp.controller('DisplayController', [ '$scope', 'dataService', 'NotifyingService', 'DisplayService', function($scope, dataService, NotifyingService, DisplayService) {
+myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplayService', function($scope, NotifyingService, DisplayService) {
 	
 	$scope.bodyparts = {
 		limbs : []
@@ -16,15 +16,45 @@ myApp.controller('DisplayController', [ '$scope', 'dataService', 'NotifyingServi
 
 		var limb = DisplayService.returnItem();
 
-		unselectSelect();
-    	limb.selected = 1
+		unSelectSelected(); //remove current selected
+    	limb.selected = 1 //add sleected to new part
     	$scope.bodyparts.limbs.push(limb);
-
     });
 
-	function unselectSelect() {
+	//remove the current selected
+	function unSelectSelected() {
 		for (var i = 0; i < $scope.bodyparts.limbs.length; i++) {
 			$scope.bodyparts.limbs[i].selected = 0;
+		}
+	}
+
+	//rotate the selected body part left or right
+	$scope.rotatePart = function(_r) {
+
+		var r = Number(_r);
+
+		for (var i = 0; i < $scope.bodyparts.limbs.length; i++) {
+			if ($scope.bodyparts.limbs[i].selected == 1) {
+				$scope.bodyparts.limbs[i].rotation = Number($scope.bodyparts.limbs[i].rotation) + r;
+				log($scope.bodyparts.limbs[i].rotation)
+				break;
+			}
+		}
+	}
+
+	//change the layer of the bodypart
+	$scope.changeLayer = function() {
+		for (var i = 0; i < $scope.bodyparts.limbs.length; i++) {
+			if ($scope.bodyparts.limbs[i].selected == 1) {
+				var part = $scope.bodyparts.limbs.splice(i, 1)[0]
+				
+				var j = i-1;
+
+				if (j < 0) j = $scope.bodyparts.limbs.length
+		
+				$scope.bodyparts.limbs.splice(j, 0, part)
+				break;
+			}
 		}
 	}
 
@@ -44,6 +74,20 @@ myApp.controller('DisplayController', [ '$scope', 'dataService', 'NotifyingServi
 
 	//when happy with character send data to DisplayService and alert canvas controller to start png creation
 	$scope.createCharacter = function() {
+
+		var container = document.getElementById('sl-display-artboard');
+		var parts = document.getElementsByClassName('sl-limb');
+
+		var crect = container.getBoundingClientRect();
+
+		for (var i = 0; i < $scope.bodyparts.limbs.length; i++) {
+
+			var rect = parts[i].getBoundingClientRect();
+
+			$scope.bodyparts.limbs[i].left = rect.left - crect.left;
+			$scope.bodyparts.limbs[i].top = rect.top - crect.top;
+		}
+
 		DisplayService.saveCharacter($scope.bodyparts);
 		NotifyingService.notify('create-character-event');
 	}
@@ -60,8 +104,8 @@ myApp.directive("bodyPart", ['$timeout', function ($timeout) {
     	link: function(scope, element, attr) {
 
    			element[0].style.backgroundImage = 'url(assets/'+scope.part.image+')';
-   			element[0].style.height = scope.part.width+'px';
-   			element[0].style.width = scope.part.height+'px';
+   			element[0].style.width = scope.part.width+'px';
+   			element[0].style.height = scope.part.height+'px';
    			element[0].style.left = scope.part.left+'px';
    			element[0].style.top = scope.part.top+'px';
 
@@ -101,6 +145,9 @@ myApp.directive('draggable', function($document) {
 		    });
 
 		    element.on('mousedown', function(event) {
+
+		    	w = element[0].offsetWidth;
+		    	h = element[0].offsetHeight;
 
 		        // Prevent default dragging of selected content
 		        event.preventDefault();
@@ -143,6 +190,7 @@ myApp.directive('draggable', function($document) {
 myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService', 'DisplayService', function($scope, dataService, NotifyingService, DisplayService) {
 
 	$scope.menudata = {
+		selected : 0,
 		currentmenu : '',
 		buttondata : ''
 	};
@@ -155,8 +203,9 @@ myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService'
 	});
 
 	//change top level menu on click
-	$scope.changeMenu = function(_i) {
-		$scope.menudata.currentmenu = _i
+	$scope.changeMenu = function(_i, _index) {
+		$scope.menudata.currentmenu = _i;
+		$scope.menudata.selected = _index
 	}
 
 
@@ -254,18 +303,23 @@ myApp.directive("characterCreator", [ function () {
 
 				var w = scope.character.limbs[i].width,
 					h = scope.character.limbs[i].height,
+					x = scope.character.limbs[i].left,
+					y = scope.character.limbs[i].top,
 					r = scope.character.limbs[i].rotation
 
 				ctx.save(); //saves the state of canvas
-	            ctx.clearRect(0, 0, mycanvas.width, mycanvas.height); //clear the canvas
-	            ctx.translate(w/2, h/2); //let's translate
+	           	//ctx.clearRect(0, 0, mycanvas.width, mycanvas.height); //clear the canvas
+	            ctx.translate(w/2 + x, h/2 + y); //let's translate
 	            ctx.rotate(Math.PI / 180 * r); //increment the angle and rotate the image 
 	            // ctx.drawImage(img, -cache.width / 2, -cache.height / 2, cache.width, cache.height); //draw the image ;)
 	            // ctx.restore(); //restore the state of canvas
-	            ctx.translate( -w/2, -h/2 );
+	            ctx.translate( -w/2 - x, -h/2 - y);
+
+	            ctx.drawImage( imageObj, x, y );
+
 
 	            //tx.drawImage( imageObj, 0, 0 );
-	           	ctx.drawImage(imageObj, -w/2, -h/2, 150, 150, 0, 0, w, h);
+	           	//ctx.drawImage(imageObj, -w/2, -h/2, w, h, 0, 0, w, h);
 				// ctx.drawImage(imageObj, -w/2, -h/2, 150, 150, 0, 0, w, h);
 				 ctx.restore(); //restore the state of canvas
 
