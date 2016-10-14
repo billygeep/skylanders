@@ -1,18 +1,30 @@
 {"bodyparts": {
-    "header": "SVG Viewer",
-    "head": [
-        {"id": "0", "image": "head.png", "width": "75px", "height": "75px" },
-        {"id": "1", "image": "head.png", "width": "125px", "height": "125px" },
-        {"id": "2", "image": "head.png", "width": "90px", "height": "90px" }
-    ],
-    "arm": [
-        {"id": "0", "image": "arm.png", "width": "75px", "height": "75px" },
-        {"id": "1", "image": "arm.png", "width": "125px", "height": "125px" },
-        {"id": "2", "image": "arm.png", "width": "90px", "height": "90px" }
-    ],
-    "leg": [
-        {"id": "0", "image": "leg.png", "width": "75px", "height": "75px" },
-        {"id": "1", "image": "leg.png", "width": "125px", "height": "125px" },
-        {"id": "2", "image": "leg.png", "width": "90px", "height": "90px" }
-    ]
+    "head": {
+        "title":"Head",
+        "limbarray": [
+            {"id": "h0", "image": "head.png", "width": "75", "height": "75", "left": "0", "top": "0", "rotation": "90", "active": "0", "selected": "0" },
+            {"id": "h1", "image": "head.png", "width": "125", "height": "125", "left": "0", "top": "0", "rotation": "90", "active": "0", "selected": "0" },
+            {"id": "h2", "image": "head.png", "width": "90", "height": "90", "left": "0", "top": "0", "rotation": "90", "active": "0", "selected": "0" }
+        ]
+    },
+    "arm": {
+        "title":"Arm",
+        "limbarray": [
+            {"id": "a0", "image": "arm.png", "width": "75", "height": "75", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a1", "image": "arm.png", "width": "125", "height": "125", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "arm.png", "width": "90", "height": "90", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a3", "image": "arm.png", "width": "75", "height": "75", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a4", "image": "arm.png", "width": "125", "height": "125", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a5", "image": "arm.png", "width": "90", "height": "90", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+        ]
+    },
+    "leg": {
+        "title":"Leg",
+        "limbarray": [
+            {"id": "l0", "image": "leg.png", "width": "75", "height": "75", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "l1", "image": "leg.png", "width": "125", "height": "125", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "l2", "image": "leg.png", "width": "85", "height": "85", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "l3", "image": "leg.png", "width": "90", "height": "90", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+        ]
+    }
 }}

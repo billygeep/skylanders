@@ -1,6 +1,26 @@
 
 
-<div id="sl-character-container">
+<div id="sl-display-container" ng-controller="DisplayController">
+	<div id="sl-display-artboard">
+		<div body-part draggable ng-repeat="limb in bodyparts.limbs" class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
+	</div>
+
+	<div class="sl-button"  ng-click="createCharacter()">SAVE</div>
+	<div class="sl-button"  ng-click="removeBodypart()">REMOVE</div>
+</div>
 
 
+<div id="sl-menu-container" ng-controller="MenuController">
+	<div class="sl-menu-row">
+		<div ng-repeat="button in menudata.buttondata" class="sl-menu-button" ng-click="changeMenu(button.limbarray)"></div>
+	</div>
+
+	<div class="sl-menu-row">
+		<menu-button ng-repeat="button in menudata.currentmenu" button="button" class="sl-menu-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } "></menu-button>
+	</div>
+</div>
+
+
+<div id="sl-canvas-container" ng-controller="CanvasController">
+	<div character-creator></div>
 </div>
