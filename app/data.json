@@ -18,7 +18,7 @@
         "title":"Legs",
         "limbarray": [
             {"id": "l0", "image": "legs1.png", "width": "104", "height": "191", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "l1", "image": "legs2.png", "width": "105", "height": "210", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "l1", "image": "legs2.png", "width": "110", "height": "210", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
             {"id": "l2", "image": "legs3.png", "width": "104", "height": "185", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     },
@@ -26,7 +26,27 @@
         "title":"arms",
         "limbarray": [
             {"id": "a0", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a1", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "a1", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a3", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a4", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a5", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a6", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a7", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a8", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a9", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a10", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a11", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a12", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a13", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+        ]
+    },
+    "sleeve": {
+        "title":"sleeve",
+        "limbarray": [
+            {"id": "a0", "image": "sleeve1.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a1", "image": "sleeve2.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "sleeve3.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     }
 }}
