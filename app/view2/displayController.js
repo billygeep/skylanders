@@ -9,7 +9,9 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 	
 	$scope.bodyparts = {
 		limbs : [],
-		switchcontrols : 0
+		switchcontrols : 0,
+		name : '',
+		team : ''
 	}
 
 	//subscribe to event to listen for bodyparts being added to the display container
@@ -82,13 +84,15 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 	$scope.createCharacter = function() {
 
 		
-		var name = document.getElementById('sl-input-name').value;
-		var team = document.getElementById('sl-input-team').value
+		var name = $scope.bodyparts.name = document.getElementById('sl-input-name').value;
+		var team = $scope.bodyparts.team = document.getElementById('sl-input-team').value
 
 		if (name != '') {
 			if (team != 0) {
 				//setup  image
 				setupImage();
+
+
 
 				//when loop complete create the character
 				DisplayService.saveCharacter($scope.bodyparts);
@@ -112,7 +116,10 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 
 		//first reset the position to counter the rotation x/y change
 		for (var i = 0; i < $scope.bodyparts.limbs.length; i++) {
-			parts[i].style['-webkit-transform'] = 'rotateZ(0)'
+			parts[i].style['-webkit-transform'] = 'rotateZ(0)';
+			parts[i].style['-ms-transform'] = 'rotateZ(0)';
+			parts[i].style['-moz-transform'] = 'rotateZ(0)';
+			parts[i].style['transform'] = 'rotateZ(0)';
 		}
 
 		//next get the x/y positions
@@ -122,6 +129,11 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 
 			$scope.bodyparts.limbs[j].left = rect.left - crect.left;
 			$scope.bodyparts.limbs[j].top = rect.top - crect.top;
+
+			parts[j].style['-webkit-transform'] = 'rotateZ('+$scope.bodyparts.limbs[j].rotation +'deg)';
+			parts[j].style['-ms-transform'] = 'rotateZ('+$scope.bodyparts.limbs[j].rotation +'deg)';
+			parts[j].style['-moz-transform'] = 'rotateZ('+$scope.bodyparts.limbs[j].rotation +'deg)';
+			parts[j].style['transform'] = 'rotateZ('+$scope.bodyparts.limbs[j].rotation +'deg)';
 		}
 	}
 
@@ -155,6 +167,21 @@ myApp.directive("bodyPart", ['$timeout', function ($timeout) {
 	   				}
 	   			})
             });
+
+            $timeout(function() {
+   				element[0].style['-webkit-transform'] = 'scale3d(1,1,1)';
+				element[0].style['-ms-transform'] = 'scale3d(1,1,1)';
+				element[0].style['-moz-transform'] = 'scale3d(1,1,1)';
+				element[0].style['transform'] = 'scale3d(1,1,1)';
+				element[0].style.opacity = 1;
+				
+				$timeout(function() {
+					element[0].style['-webkit-transition'] = '0s'
+					element[0].style['-ms-transition'] = '0s'
+					element[0].style['-moz-transition'] = '0s'
+					element[0].style['transition'] = '0s'
+				},600)
+   			})
       	}
     }
 }])

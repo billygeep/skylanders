@@ -48,5 +48,13 @@
             {"id": "a1", "image": "sleeve2.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
             {"id": "a2", "image": "sleeve3.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
+    },
+    "accessories": {
+        "title":"accessories",
+        "limbarray": [
+            {"id": "a0", "image": "sleeve1.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a1", "image": "sleeve2.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "sleeve3.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+        ]
     }
 }}

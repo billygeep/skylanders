@@ -65,8 +65,19 @@
 .sl-limb {
 	background-size: 100%;
 	position: absolute;
-/*	border-radius: 5px;
-	border:2px dotted rgba(255,180,90,0.3);*/
+	background-size: 100%;
+	position: absolute;
+	opacity: 0;
+	-webkit-transform:scale3d(0.7,0.7,0.7);
+	-moz-transform:scale3d(0.7,0.7,0.7);
+	transform:scale3d(0.7,0.7,0.7);
+	-webkit-transform-origin:50% 50%;
+	-ms-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	-webkit-transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 .sl-limb-selected {
 	border-radius: 5px;
@@ -96,8 +107,8 @@
 
 
 #sl-menu-container {
-	width:400px;
-	height:200px;
+	width:320px;
+	height:500px;
 	background-color: #999;
 	float: left
 }
@@ -105,13 +116,42 @@
 	clear: both;
 }
 .sl-menu-button {
-	width: 50px;
-	height:50px;
+	width: 49px;
+	height:49px;
 	margin: 2px;
 	float:left;
 	background-color: #000;
 	color: #fff;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center;
 }
+.sl-menu-sub-button {
+	width: 76px;
+	height:76px;
+	margin: 2px;
+	position: relative;
+	float:left;
+	border-radius: 5px;
+	background-color: #000;
+	color: #fff;
+}
+.sl-menu-sub-button-inner {
+	width:100%;
+	height:100%;
+	-webkit-transform:scale3d(0.85,0.85,0.85);
+	-moz-transform:scale3d(0.85,0.85,0.85);
+	transform:scale3d(0.85,0.85,0.85);
+	-webkit-transform-origin:50% 50%;
+	-ms-transform-origin:50% 50%;
+	transform-origin:50% 50%;
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	-webkit-transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
 .sl-menu-button-active {
 	background-color: #c10000;
 }

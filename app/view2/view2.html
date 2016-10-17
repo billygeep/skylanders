@@ -39,7 +39,9 @@
 	</div>
 
 	<div class="sl-menu-row">
-		<menu-button ng-repeat="button in menudata.currentmenu | startFrom:menudata.currentpage*menudata.pagesize | limitTo:menudata.pagesize" button="button" class="sl-menu-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } "></menu-button>
+		<div ng-repeat="button in menudata.currentmenu | startFrom:menudata.currentpage*menudata.pagesize | limitTo:menudata.pagesize" class="sl-menu-sub-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } ">
+			<div  menu-button  class="sl-menu-sub-button-inner" button="button"></div>
+		</div>
 	</div>
 
 

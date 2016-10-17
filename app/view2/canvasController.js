@@ -71,6 +71,11 @@ myApp.directive("characterCreator", [ function () {
 				if (i < scope.character.limbs.length) {
 					generateImgs();
 				} else {
+					ctx.fillStyle = '#00a984';
+					ctx.textAlign="center"; 
+					ctx.font = "50px helvetica";
+					ctx.fillText(scope.character.name, 250, 380);
+
 					convertToDataUrl();
 				}
 			}

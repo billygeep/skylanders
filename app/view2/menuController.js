@@ -6,7 +6,7 @@ myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService'
 		selected : 0,
 		currentmenu : '',
 		buttondata : '',
-		pagesize : 5,
+		pagesize : 8,
 		currentpage : 0,
 	};
 
@@ -19,6 +19,7 @@ myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService'
 
 	//change top level menu on click
 	$scope.changeMenu = function(_i, _index) {
+		$scope.menudata.currentpage = 0;
 		$scope.menudata.currentmenu = _i;
 		$scope.menudata.selected = _index
 	}
@@ -41,13 +42,21 @@ myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService'
 
 }]);
 
-myApp.directive("menuButton", [ function () {
+myApp.directive("menuButton", [ '$timeout', function ($timeout) {
     return {
     	restrict: 'EA',
     	scope: {
       		button: '='
     	},
     	link: function(scope, element, attr) {
+   			element[0].style.backgroundImage = 'url(assets/'+scope.button.image+')';
+
+   			$timeout(function() {
+   				element[0].style['-webkit-transform'] = 'scale3d(1,1,1)';
+				element[0].style['-ms-transform'] = 'scale3d(1,1,1)';
+				element[0].style['-moz-transform'] = 'scale3d(1,1,1)';
+				element[0].style['transform'] = 'scale3d(1,1,1)';
+   			})
    			
       	}
     }
