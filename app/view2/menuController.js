@@ -1,13 +1,14 @@
 'use strict';
 
-myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService', 'DisplayService', function($scope, dataService, NotifyingService, DisplayService) {
+myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'NotifyingService', 'DisplayService', function($scope, $timeout, dataService, NotifyingService, DisplayService) {
 
 	$scope.menudata = {
 		selected : 0,
 		currentmenu : '',
 		buttondata : '',
-		pagesize : 8,
+		pagesize : 12,
 		currentpage : 0,
+		y : 324
 	};
 
 	//get the body parts
@@ -22,6 +23,8 @@ myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService'
 		$scope.menudata.currentpage = 0;
 		$scope.menudata.currentmenu = _i;
 		$scope.menudata.selected = _index
+
+		// $scope.menudata.counter = 0;
 	}
 
 
@@ -40,13 +43,51 @@ myApp.controller('MenuController', [ '$scope', 'dataService', 'NotifyingService'
         return Math.ceil($scope.menudata.currentmenu.length/$scope.menudata.pagesize);                
     }
 
+    $scope.swipeMenu = function(_val) {
+
+    	var val = _val;
+
+    	if (val == 0) {
+    		$scope.menudata.currentpage=$scope.menudata.currentpage-1
+    	} else {
+    		$scope.menudata.currentpage=$scope.menudata.currentpage+1;
+    		// $scope.menudata.swipe = -1;
+    		// $timeout(function() {
+    		// 	$scope.menudata.swipe = 0;
+    		// 	$scope.menudata.currentpage=$scope.menudata.currentpage+1;
+    		// },600)
+    	}
+    	
+    }
+
 }]);
+
+myApp.directive("topButton", [ '$timeout', function ($timeout) {
+    return {
+    	restrict: 'EA',
+    	scope: {
+      		button: '='
+    	},
+    	link: function(scope, element, attr) {
+   			element[0].style.backgroundImage = 'url(assets/'+scope.button.title+'_icon.png)';
+   			log(scope.button)
+   			$timeout(function() {
+   				element[0].style['-webkit-transform'] = 'scale3d(1,1,1)';
+				element[0].style['-ms-transform'] = 'scale3d(1,1,1)';
+				element[0].style['-moz-transform'] = 'scale3d(1,1,1)';
+				element[0].style['transform'] = 'scale3d(1,1,1)';
+   			})
+   			
+      	}
+    }
+}])
 
 myApp.directive("menuButton", [ '$timeout', function ($timeout) {
     return {
     	restrict: 'EA',
     	scope: {
-      		button: '='
+      		button: '=',
+      		index: '@'
     	},
     	link: function(scope, element, attr) {
    			element[0].style.backgroundImage = 'url(assets/'+scope.button.image+')';
@@ -57,7 +98,7 @@ myApp.directive("menuButton", [ '$timeout', function ($timeout) {
 				element[0].style['-moz-transform'] = 'scale3d(1,1,1)';
 				element[0].style['transform'] = 'scale3d(1,1,1)';
    			})
-   			
+   	
       	}
     }
 }])

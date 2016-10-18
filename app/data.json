@@ -1,60 +1,75 @@
 {"bodyparts": {
     "head": {
-        "title":"Head",
+        "title":"head",
         "limbarray": [
-            {"id": "h0", "image": "head1.png", "width": "73", "height": "115", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "h1", "image": "head2.png", "width": "70", "height": "67", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "h2", "image": "head3.png", "width": "67", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "h0", "image": "head1.png", "width": "103", "height": "145", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h1", "image": "head2.png", "width": "100", "height": "97", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h2", "image": "head3.png", "width": "97", "height": "116", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h3", "image": "head1.png", "width": "103", "height": "145", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h4", "image": "head2.png", "width": "100", "height": "97", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h5", "image": "head3.png", "width": "97", "height": "116", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h6", "image": "head1.png", "width": "103", "height": "145", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h7", "image": "head2.png", "width": "100", "height": "97", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h8", "image": "head3.png", "width": "97", "height": "116", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h9", "image": "head1.png", "width": "103", "height": "145", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h10", "image": "head2.png", "width": "100", "height": "97", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h11", "image": "head3.png", "width": "97", "height": "116", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h12", "image": "head1.png", "width": "103", "height": "145", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h13", "image": "head2.png", "width": "100", "height": "97", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h14", "image": "head3.png", "width": "97", "height": "116", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h15", "image": "head1.png", "width": "103", "height": "145", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h16", "image": "head2.png", "width": "100", "height": "97", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "h17", "image": "head3.png", "width": "97", "height": "116", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     },
     "torso": {
-        "title":"Torso",
+        "title":"torso",
         "limbarray": [
-            {"id": "t0", "image": "torso1.png", "width": "130", "height": "132", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "t1", "image": "torso2.png", "width": "128", "height": "129", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "t0", "image": "torso1.png", "width": "160", "height": "162", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "t1", "image": "torso2.png", "width": "158", "height": "159", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     },
     "legs": {
-        "title":"Legs",
+        "title":"legs",
         "limbarray": [
-            {"id": "l0", "image": "legs1.png", "width": "104", "height": "191", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "l1", "image": "legs2.png", "width": "110", "height": "210", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "l2", "image": "legs3.png", "width": "104", "height": "185", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "l0", "image": "legs1.png", "width": "134", "height": "221", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "l1", "image": "legs2.png", "width": "140", "height": "240", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "l2", "image": "legs3.png", "width": "134", "height": "215", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     },
     "arms": {
         "title":"arms",
         "limbarray": [
-            {"id": "a0", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a1", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a2", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a3", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a4", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a5", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a6", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a7", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a8", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a9", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a10", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a11", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a12", "image": "arm1.png", "width": "66", "height": "78", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a13", "image": "arm2.png", "width": "77", "height": "81", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "a0", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a1", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a3", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a4", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a5", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a6", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a7", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a8", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a9", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a10", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a11", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a12", "image": "arm1.png", "width": "96", "height": "108", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a13", "image": "arm2.png", "width": "107", "height": "111", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     },
     "sleeve": {
         "title":"sleeve",
         "limbarray": [
-            {"id": "a0", "image": "sleeve1.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a1", "image": "sleeve2.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a2", "image": "sleeve3.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "a0", "image": "sleeve1.png", "width": "76", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a1", "image": "sleeve2.png", "width": "76", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "sleeve3.png", "width": "76", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     },
     "accessories": {
         "title":"accessories",
         "limbarray": [
-            {"id": "a0", "image": "sleeve1.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a1", "image": "sleeve2.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
-            {"id": "a2", "image": "sleeve3.png", "width": "46", "height": "56", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
+            {"id": "a0", "image": "sleeve1.png", "width": "76", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a1", "image": "sleeve2.png", "width": "76", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" },
+            {"id": "a2", "image": "sleeve3.png", "width": "76", "height": "86", "left": "0", "top": "0", "rotation": "0", "active": "0", "selected": "0" }
         ]
     }
 }}

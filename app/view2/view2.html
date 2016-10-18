@@ -1,58 +1,71 @@
 
+<section>
 
-<div id="sl-display-container" ng-controller="DisplayController">
-	<div id="sl-display-artboard">
-		<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
-	</div>
+	<div id="sl-design-section">
+
+		<div id="sl-display-container" ng-controller="DisplayController">
+			<div id="sl-display-artboard">
+				<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
+			</div>
 
 
-	<div id="sl-display-controls" ng-class=" { 'sl-switch-controls' : bodyparts.switchcontrols == 1 } ">
-		<div id="sl-display-controls-1" class="sl-display-controls">
-			<button class="sl-button"  ng-click="nameCharacter()">NEXT</button>
-			<button class="sl-button"  ng-click="removeBodypart()">REMOVE</button>
-			<button class="sl-button"  ng-click="changeLayer()">LAYER</button>
-			<button class="sl-button-small"  ng-click="rotatePart(-2)">RotL</button>
-			<button class="sl-button-small"  ng-click="rotatePart(2)">RotR</button>
+			<div id="sl-display-controls-container">
+				<div id="sl-display-controls" ng-class=" { 'sl-switch-controls' : bodyparts.switchcontrols == 1 } ">
+					<div id="sl-display-controls-1" class="sl-display-controls">
+						<div class="sl-display-icon" id="sl-display-icon-rotl" ng-click="rotatePart(-2)"></div>
+						<div class="sl-display-icon" id="sl-display-icon-rotr" ng-click="rotatePart(2)"></div>
+						<div class="sl-display-icon" id="sl-display-icon-layer" ng-click="changeLayer()"></div>
+						<div class="sl-display-icon" id="sl-display-icon-delete" ng-click="removeBodypart()"></div>
+					</div>
+
+					<div id="sl-display-controls-2" class="sl-display-controls">
+						<h4>Name your mascot</h4>
+						<input id="sl-input-name" name="name" maxlength="20"/>
+						<h4>Select your favourite team</h4>
+						<select id="sl-input-team" id="location-dropdown">
+							<option value="0" selected="selected">Select a team</option>
+							<option value="1">Arsenal</option>
+							<option value="2">Aston Villa</option>
+							<option value="3">Chelsea</option>
+							<option value="4">Wimbledon</option>
+						</select>
+
+						<div class="sl-button"  ng-click="createCharacter()">SAVE</div>
+					</div>
+
+					
+				</div>
+				<div class="sl-display-button" id="sl-display-icon-save" ng-click="nameCharacter()">SAVE & NAME</div>
+			</div>
 		</div>
 
-		<div id="sl-display-controls-2" class="sl-display-controls">
-			<h4>Name your mascot</h4>
-			<input id="sl-input-name" name="name" maxlength="20"/>
-			<h4>Select your favourite team</h4>
-			<select id="sl-input-team" id="location-dropdown">
-				<option value="0" selected="selected">Select a team</option>
-				<option value="1">Arsenal</option>
-				<option value="2">Aston Villa</option>
-				<option value="3">Chelsea</option>
-				<option value="4">Wimbledon</option>
-			</select>
 
-			<div class="sl-button"  ng-click="createCharacter()">SAVE</div>
+		<div id="sl-menu-container" ng-controller="MenuController">
+			<div class="sl-menu-row">
+				<div ng-repeat="button in menudata.buttondata track by $index" class="sl-menu-button" ng-class=" { 'sl-menu-button-active' : menudata.selected == $index } " ng-click="changeMenu(button.limbarray, $index)" top-button button="button"></div>
+			</div>
+
+
+			<div class="sl-menu-row-parts">
+				<div class="sl-menu-row-parts-inner" ng-style=" { '-webkit-transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)', 'transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)' } ">
+					<div ng-repeat="button in menudata.currentmenu" class="sl-menu-sub-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } " menu-button button="button">
+					<!-- 	<div  menu-button  class="sl-menu-sub-button-inner" button="button"></div> -->
+					</div>
+				</div>
+			</div>
+
+
+			<div class="sl-menu-row">
+				<button class="sl-button"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0">LEFT</button>
+				<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
+				<button class="sl-button"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1">RIGHT</button>
+			</div>
 		</div>
-	</div>
-</div>
 
 
-<div id="sl-menu-container" ng-controller="MenuController">
-	<div class="sl-menu-row">
-		<div ng-repeat="button in menudata.buttondata track by $index" class="sl-menu-button" ng-class=" { 'sl-menu-button-active' : menudata.selected == $index } " ng-click="changeMenu(button.limbarray, $index)"></div>
-	</div>
-
-	<div class="sl-menu-row">
-		<div ng-repeat="button in menudata.currentmenu | startFrom:menudata.currentpage*menudata.pagesize | limitTo:menudata.pagesize" class="sl-menu-sub-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } ">
-			<div  menu-button  class="sl-menu-sub-button-inner" button="button"></div>
+		<div id="sl-canvas-container" ng-controller="CanvasController">
+			<div character-creator></div>
 		</div>
+
 	</div>
-
-
-	<div class="sl-menu-row">
-		<button class="sl-button"  ng-click="menudata.currentpage=menudata.currentpage-1" ng-disabled="menudata.currentpage == 0">LEFT</button>
-		<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
-		<button class="sl-button"  ng-click="menudata.currentpage=menudata.currentpage+1" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1">RIGHT</button>
-	</div>
-</div>
-
-
-<div id="sl-canvas-container" ng-controller="CanvasController">
-	<div character-creator></div>
-</div>
+</section>
