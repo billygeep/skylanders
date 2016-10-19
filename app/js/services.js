@@ -25,6 +25,7 @@ myApp.factory('DisplayService', function($rootScope) {
 
 	var item;
 	var character;
+	var dataurl;
 
     return {
 
@@ -32,7 +33,7 @@ myApp.factory('DisplayService', function($rootScope) {
             item = _item;
         },
 
-        returnItem: function(call) {
+        returnItem: function() {
         	return item;
         },
 
@@ -40,8 +41,16 @@ myApp.factory('DisplayService', function($rootScope) {
             character = _item;
         },
 
-        returnCharacter: function(call) {
+        returnCharacter: function() {
         	return character;
+        },
+
+        storeImageData: function(_data) {
+            dataurl = _data;
+        },
+
+        returnImageData: function() {
+        	return dataurl;
         }
     };
 });

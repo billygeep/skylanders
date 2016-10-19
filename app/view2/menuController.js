@@ -6,24 +6,26 @@ myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'Notif
 		selected : 0,
 		currentmenu : '',
 		buttondata : '',
-		pagesize : 12,
+		pagesize : 16,
 		currentpage : 0,
-		y : 324
+		y : 372
 	};
 
 	//get the body parts
 	var promise = dataService.getData();
 	promise.then(function(data) {
 	    $scope.menudata.buttondata = data.data.bodyparts;
-	    $scope.menudata.currentmenu = $scope.menudata.buttondata.head.limbarray
+	    $scope.menudata.currentmenu = $scope.menudata.buttondata.head.limbarray;
 	});
 
 	//change top level menu on click
 	$scope.changeMenu = function(_i, _index) {
 		$scope.menudata.currentpage = 0;
 		$scope.menudata.currentmenu = _i;
-		$scope.menudata.selected = _index
+		$scope.menudata.selected = _index;
 
+
+		log($scope.menudata.buttondata)
 		// $scope.menudata.counter = 0;
 	}
 
@@ -48,7 +50,7 @@ myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'Notif
     	var val = _val;
 
     	if (val == 0) {
-    		$scope.menudata.currentpage=$scope.menudata.currentpage-1
+    		$scope.menudata.currentpage=$scope.menudata.currentpage-1;
     	} else {
     		$scope.menudata.currentpage=$scope.menudata.currentpage+1;
     		// $scope.menudata.swipe = -1;
@@ -70,7 +72,7 @@ myApp.directive("topButton", [ '$timeout', function ($timeout) {
     	},
     	link: function(scope, element, attr) {
    			element[0].style.backgroundImage = 'url(assets/'+scope.button.title+'_icon.png)';
-   			log(scope.button)
+
    			$timeout(function() {
    				element[0].style['-webkit-transform'] = 'scale3d(1,1,1)';
 				element[0].style['-ms-transform'] = 'scale3d(1,1,1)';

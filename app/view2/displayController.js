@@ -5,13 +5,16 @@ myApp.controller('View2Ctrl', [ '$scope', '$timeout', 'dataService', function($s
 }]);
 
 
-myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplayService', function($scope, NotifyingService, DisplayService) {
+myApp.controller('DisplayController', [ '$scope', '$timeout', 'NotifyingService', 'DisplayService', function($scope, $timeout, NotifyingService, DisplayService) {
 	
 	$scope.bodyparts = {
+		inactive : false,
 		limbs : [],
-		switchcontrols : 0,
 		name : '',
-		team : ''
+		team : '',
+		warning : '',
+		warningswitch : 0,
+		phase : 0
 	}
 
 	//subscribe to event to listen for bodyparts being added to the display container
@@ -75,15 +78,50 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 		}
 	}
 
+	//go back 1 phase
+	$scope.backPhase = function() {
+		switch ($scope.bodyparts.phase) {
+			case 1 :
+				$scope.bodyparts.phase = 0;
+				$scope.bodyparts.inactive = false;
+			break;
+			case 2 :
+				$scope.bodyparts.phase = 1;
+			break;
+		}
+	}
+
 	//show panel with character name entry
-	$scope.nameCharacter = function() {
-		$scope.bodyparts.switchcontrols = 1;
+	$scope.nextPhase = function() {
+		switch ($scope.bodyparts.phase) {
+			case 0 :
+				addName();
+			break;
+			case 1 :
+				createCharacter();
+			break;
+		}
+	}
+
+	function addName() {
+		//check if at least 1 body part added
+		if ($scope.bodyparts.limbs.length == 0) {
+			$scope.bodyparts.warning = 'YOUR MASCOT IS EMPTY';
+			showhideWarning();
+		} else {
+			$timeout(function() {
+				$scope.bodyparts.inactive = true;
+				$scope.bodyparts.phase = 1;
+
+				unSelectSelected();
+			})
+			
+		}
 	}
 
 	//when happy with character send data to DisplayService and alert canvas controller to start png creation
-	$scope.createCharacter = function() {
+	function createCharacter() {
 
-		
 		var name = $scope.bodyparts.name = document.getElementById('sl-input-name').value;
 		var team = $scope.bodyparts.team = document.getElementById('sl-input-team').value
 
@@ -92,19 +130,29 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 				//setup  image
 				setupImage();
 
-
-
 				//when loop complete create the character
 				DisplayService.saveCharacter($scope.bodyparts);
 				NotifyingService.notify('create-character-event');
+				$scope.bodyparts.phase = 2;
 			} else {
-				alert('please select a team from the drop down')
+				$scope.bodyparts.warning = 'PLEASE SELECT A TEAM FROM THE DROPDOWN';
+				showhideWarning();
 			}
 		} else {
-			alert('please enter your name')
+			$scope.bodyparts.warning = 'PLEASE ENTER A NAME FOR YOUR MASCOT';
+			showhideWarning();
 		}
 	}
 
+	//show and hide the warning on user input errors
+	function showhideWarning() {
+
+		$scope.bodyparts.warningswitch = 1;
+
+		$timeout(function() {
+			$scope.bodyparts.warningswitch = 0;
+		},2000)
+	}
 
 	//add all x/y positions to array ready for canavas draw
 	function setupImage() {
@@ -136,9 +184,9 @@ myApp.controller('DisplayController', [ '$scope', 'NotifyingService', 'DisplaySe
 			parts[j].style['transform'] = 'rotateZ('+$scope.bodyparts.limbs[j].rotation +'deg)';
 		}
 	}
-
 }]);
 
+//bodypart direct handles styling and animation in of added pieces
 myApp.directive("bodyPart", ['$timeout', function ($timeout) {
     return {
     	restrict: 'EA',
@@ -174,7 +222,7 @@ myApp.directive("bodyPart", ['$timeout', function ($timeout) {
 				element[0].style['-moz-transform'] = 'scale3d(1,1,1)';
 				element[0].style['transform'] = 'scale3d(1,1,1)';
 				element[0].style.opacity = 1;
-				
+
 				$timeout(function() {
 					element[0].style['-webkit-transition'] = '0s'
 					element[0].style['-ms-transition'] = '0s'
@@ -186,6 +234,7 @@ myApp.directive("bodyPart", ['$timeout', function ($timeout) {
     }
 }])
 
+//draggable directive handles the drag drop of parts on the artboard
 myApp.directive('draggable', function($document) {
     return {
 	    link: function(scope, element, attr) {
@@ -221,8 +270,8 @@ myApp.directive('draggable', function($document) {
 		        y = event.screenY - startY;
 		        x = event.screenX - startX;
 
-		        var maxw = 500 - w - b;
-		        var maxh = 500 - h - b;
+		        var maxw = 320 - w - b;
+		        var maxh = 460 - h - b;
 
 		        if (x < 0) x = 0;
 		        if (y < 0) y = 0;

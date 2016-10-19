@@ -4,13 +4,15 @@
 	<div id="sl-design-section">
 
 		<div id="sl-display-container" ng-controller="DisplayController">
-			<div id="sl-display-artboard">
+			<div id="sl-display-artboard" ng-class=" { 'sl-disable' : bodyparts.inactive } ">
 				<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
+
+				<div id="sl-warning" ng-class=" { 'sl-show' : bodyparts.warningswitch == 1 } ">{{bodyparts.warning}}</div>
 			</div>
 
 
 			<div id="sl-display-controls-container">
-				<div id="sl-display-controls" ng-class=" { 'sl-switch-controls' : bodyparts.switchcontrols == 1 } ">
+				<div id="sl-display-controls" ng-class=" { 'sl-switch-controls' : bodyparts.phase == 1, 'sl-switch-controls-2' : bodyparts.phase == 2 } ">
 					<div id="sl-display-controls-1" class="sl-display-controls">
 						<div class="sl-display-icon" id="sl-display-icon-rotl" ng-click="rotatePart(-2)"></div>
 						<div class="sl-display-icon" id="sl-display-icon-rotr" ng-click="rotatePart(2)"></div>
@@ -19,23 +21,33 @@
 					</div>
 
 					<div id="sl-display-controls-2" class="sl-display-controls">
-						<h4>Name your mascot</h4>
-						<input id="sl-input-name" name="name" maxlength="20"/>
-						<h4>Select your favourite team</h4>
-						<select id="sl-input-team" id="location-dropdown">
-							<option value="0" selected="selected">Select a team</option>
-							<option value="1">Arsenal</option>
-							<option value="2">Aston Villa</option>
-							<option value="3">Chelsea</option>
-							<option value="4">Wimbledon</option>
-						</select>
 
-						<div class="sl-button"  ng-click="createCharacter()">SAVE</div>
+						<div class="sl-input-row">
+							<span>NAME YOUR MASCOT</span>
+							<span><input id="sl-input-name" name="name" maxlength="20"/></span>
+						</div>
+
+						<div class="sl-input-row">
+							<span>SELECT YOUR TEAM</span>
+							<span>
+								<select id="sl-input-team">
+									<option value="0" selected="selected">Select a team</option>
+									<option value="1">Arsenal</option>
+									<option value="2">Aston Villa</option>
+									<option value="3">Chelsea</option>
+									<option value="4">Wimbledon</option>
+								</select>
+							</span>
+						</div>
 					</div>
-
-					
+					<div id="sl-display-controls-3" class="sl-display-controls">
+						<p>FILL OUT YOUR DETAILS ON THE LEFT PANEL<br/> TO SUBMIT YOUR MASCOT</p>
+					</div>
 				</div>
-				<div class="sl-display-button" id="sl-display-icon-save" ng-click="nameCharacter()">SAVE & NAME</div>
+			</div>
+			<div id="sl-display-button-holder">
+				<div class="sl-display-button" id="sl-display-button-back" ng-click="backPhase()" ng-class=" { 'sl-button-inactive' : bodyparts.phase == 0 } ">BACK</div>
+				<div class="sl-display-button" id="sl-display-button-save" ng-click="nextPhase()" ng-class=" { 'sl-button-inactive' : bodyparts.phase == 2 } ">NEXT</div>
 			</div>
 		</div>
 
@@ -49,16 +61,16 @@
 			<div class="sl-menu-row-parts">
 				<div class="sl-menu-row-parts-inner" ng-style=" { '-webkit-transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)', 'transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)' } ">
 					<div ng-repeat="button in menudata.currentmenu" class="sl-menu-sub-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } " menu-button button="button">
-					<!-- 	<div  menu-button  class="sl-menu-sub-button-inner" button="button"></div> -->
+					<!-- <div  menu-button  class="sl-menu-sub-button-inner" button="button"></div> -->
 					</div>
 				</div>
 			</div>
 
 
 			<div class="sl-menu-row">
-				<button class="sl-button"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0">LEFT</button>
+				<button class="sl-button-arrow"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0" ng-class=" { 'sl-button-inactive' : menudata.currentpage == 0 } "></button>
 				<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
-				<button class="sl-button"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1">RIGHT</button>
+				<button id="sl-button-down" class="sl-button-arrow"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1" ng-class=" { 'sl-button-inactive' : menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1} "></button>
 			</div>
 		</div>
 
@@ -66,6 +78,25 @@
 		<div id="sl-canvas-container" ng-controller="CanvasController">
 			<div character-creator></div>
 		</div>
+	</div>
+</section>
+
+
+
+<section>
+
+	<div id="sl-gallery-section">
 
 	</div>
+
+
+</section>
+
+<section>
+
+	<div id="sl-products-section">
+
+	</div>
+
+
 </section>
