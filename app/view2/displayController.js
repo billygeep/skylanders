@@ -84,9 +84,11 @@ myApp.controller('DisplayController', [ '$scope', '$timeout', 'NotifyingService'
 			case 1 :
 				$scope.bodyparts.phase = 0;
 				$scope.bodyparts.inactive = false;
+				NotifyingService.notify('toggle-menu-event');
 			break;
 			case 2 :
 				$scope.bodyparts.phase = 1;
+				NotifyingService.notify('toggle-view-event');
 			break;
 		}
 	}
@@ -112,6 +114,7 @@ myApp.controller('DisplayController', [ '$scope', '$timeout', 'NotifyingService'
 			$timeout(function() {
 				$scope.bodyparts.inactive = true;
 				$scope.bodyparts.phase = 1;
+				NotifyingService.notify('toggle-menu-event');
 
 				unSelectSelected();
 			})
@@ -132,6 +135,7 @@ myApp.controller('DisplayController', [ '$scope', '$timeout', 'NotifyingService'
 
 				//when loop complete create the character
 				DisplayService.saveCharacter($scope.bodyparts);
+				NotifyingService.notify('toggle-view-event');
 				NotifyingService.notify('create-character-event');
 				$scope.bodyparts.phase = 2;
 			} else {

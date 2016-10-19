@@ -8,7 +8,9 @@ myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'Notif
 		buttondata : '',
 		pagesize : 16,
 		currentpage : 0,
-		y : 372
+		hidemenu : false,
+		y : 372,
+		view : 0 // 0 = menu / 1 = competition
 	};
 
 	//get the body parts
@@ -23,7 +25,6 @@ myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'Notif
 		$scope.menudata.currentpage = 0;
 		$scope.menudata.currentmenu = _i;
 		$scope.menudata.selected = _index;
-
 
 		log($scope.menudata.buttondata)
 		// $scope.menudata.counter = 0;
@@ -41,6 +42,17 @@ myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'Notif
 		}
 	}
 
+	//subscribe to event to listen for call to turn menu active on/off
+	NotifyingService.subscribe($scope, 'toggle-menu-event', function somethingChanged() {
+		$scope.menudata.hidemenu = ($scope.menudata.hidemenu === true) ? false : true;
+    });	
+
+    //subscribe to event to listen for call to change view from menu to competition
+	NotifyingService.subscribe($scope, 'toggle-view-event', function somethingChanged() {
+		$scope.menudata.view = ($scope.menudata.view === 0) ? 1 : 0;
+    });	
+
+	//menu page counter gets the total pages per tab
 	$scope.numberOfPages=function(){
         return Math.ceil($scope.menudata.currentmenu.length/$scope.menudata.pagesize);                
     }
@@ -53,13 +65,7 @@ myApp.controller('MenuController', [ '$scope', '$timeout', 'dataService', 'Notif
     		$scope.menudata.currentpage=$scope.menudata.currentpage-1;
     	} else {
     		$scope.menudata.currentpage=$scope.menudata.currentpage+1;
-    		// $scope.menudata.swipe = -1;
-    		// $timeout(function() {
-    		// 	$scope.menudata.swipe = 0;
-    		// 	$scope.menudata.currentpage=$scope.menudata.currentpage+1;
-    		// },600)
-    	}
-    	
+    	}	
     }
 
 }]);

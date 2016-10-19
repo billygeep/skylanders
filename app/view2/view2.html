@@ -3,6 +3,7 @@
 
 	<div id="sl-design-section">
 
+
 		<div id="sl-display-container" ng-controller="DisplayController">
 			<div id="sl-display-artboard" ng-class=" { 'sl-disable' : bodyparts.inactive } ">
 				<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
@@ -51,28 +52,42 @@
 			</div>
 		</div>
 
+		<div id="sl-right-container"  ng-controller="MenuController">
 
-		<div id="sl-menu-container" ng-controller="MenuController">
-			<div class="sl-menu-row">
-				<div ng-repeat="button in menudata.buttondata track by $index" class="sl-menu-button" ng-class=" { 'sl-menu-button-active' : menudata.selected == $index } " ng-click="changeMenu(button.limbarray, $index)" top-button button="button"></div>
-			</div>
+			<div id="sl-menu-container" ng-class=" { 'sl-menu-hide' : menudata.hidemenu } " ng-show="menudata.view == 0">
+
+				<div class="sl-title" id="sl-title-build"></div>
+
+				<div class="sl-menu-row">
+					<div ng-repeat="button in menudata.buttondata track by $index" class="sl-menu-button" ng-class=" { 'sl-menu-button-active' : menudata.selected == $index } " ng-click="changeMenu(button.limbarray, $index)" top-button button="button"></div>
+				</div>
 
 
-			<div class="sl-menu-row-parts">
-				<div class="sl-menu-row-parts-inner" ng-style=" { '-webkit-transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)', 'transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)' } ">
-					<div ng-repeat="button in menudata.currentmenu" class="sl-menu-sub-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } " menu-button button="button">
-					<!-- <div  menu-button  class="sl-menu-sub-button-inner" button="button"></div> -->
+				<div class="sl-menu-row-parts">
+					<div class="sl-menu-row-parts-inner" ng-style=" { '-webkit-transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)', 'transform' : 'translateY('+ (-menudata.currentpage*menudata.y) +'px)' } ">
+						<div ng-repeat="button in menudata.currentmenu" class="sl-menu-sub-button" ng-click="selectBodypart(button)" ng-class=" { 'sl-menu-button-active' : button.active == 1 } " menu-button button="button">
+						<!-- <div  menu-button  class="sl-menu-sub-button-inner" button="button"></div> -->
+						</div>
 					</div>
+				</div>
+
+
+				<div class="sl-menu-row">
+					<button class="sl-button-arrow"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0" ng-class=" { 'sl-button-inactive' : menudata.currentpage == 0 } "></button>
+					<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
+					<button id="sl-button-down" class="sl-button-arrow"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1" ng-class=" { 'sl-button-inactive' : menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1} "></button>
 				</div>
 			</div>
 
+			<div id="sl-funnel-container" ng-show="menudata.view == 1">
 
-			<div class="sl-menu-row">
-				<button class="sl-button-arrow"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0" ng-class=" { 'sl-button-inactive' : menudata.currentpage == 0 } "></button>
-				<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
-				<button id="sl-button-down" class="sl-button-arrow"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1" ng-class=" { 'sl-button-inactive' : menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1} "></button>
+				<div class="sl-title" id="sl-title-enter"></div>
+
+				<div id="sl-funnel"></div>
 			</div>
+
 		</div>
+
 
 
 		<div id="sl-canvas-container" ng-controller="CanvasController">
