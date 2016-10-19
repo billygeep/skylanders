@@ -108,7 +108,7 @@ myApp.controller('DisplayController', [ '$scope', '$timeout', 'NotifyingService'
 	function addName() {
 		//check if at least 1 body part added
 		if ($scope.bodyparts.limbs.length == 0) {
-			$scope.bodyparts.warning = 'YOUR MASCOT IS EMPTY';
+			$scope.bodyparts.warning = 'YOU NEED TO ADD A BODY PART!';
 			showhideWarning();
 		} else {
 			$timeout(function() {

@@ -1,11 +1,14 @@
 
 <section>
 
-	<div id="sl-design-section">
+	<div id="sl-design-section" class="sl-section">
 
 
 		<div id="sl-display-container" ng-controller="DisplayController">
 			<div id="sl-display-artboard" ng-class=" { 'sl-disable' : bodyparts.inactive } ">
+
+				<div id="sl-logo"></div>
+
 				<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
 
 				<div id="sl-warning" ng-class=" { 'sl-show' : bodyparts.warningswitch == 1 } ">{{bodyparts.warning}}</div>
@@ -100,7 +103,7 @@
 
 <section>
 
-	<div id="sl-gallery-section">
+	<div id="sl-gallery-section" class="sl-section">
 
 	</div>
 
@@ -109,7 +112,7 @@
 
 <section>
 
-	<div id="sl-products-section">
+	<div id="sl-products-section" class="sl-section">
 
 	</div>
 

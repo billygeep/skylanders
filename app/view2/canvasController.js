@@ -13,7 +13,7 @@ myApp.controller('CanvasController', [ '$scope', 'NotifyingService', 'DisplaySer
     });
 }]);
 
-myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService) {
+myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService	) {
     return function (scope, element, attrs) {
 
     	// var canvas = angular.element("<canvas>");
@@ -23,12 +23,15 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
     	// var mycanvas = element.find('canvas')[0];
     	var ctx = mycanvas.getContext("2d");
 
-    	mycanvas.width = 640;
-    	mycanvas.height = 920;
-    	mycanvas.style.width = 320 + "px";
-    	mycanvas.style.height = 460 + "px";
+    	mycanvas.width = 320;
+    	mycanvas.height = 500;
 
-    	ctx.scale(2, 2);
+    	ctx.fillStyle = "#f2f8ff";
+        ctx.fillRect(0,0,mycanvas.width,mycanvas.height);
+    	// mycanvas.style.width = 320 + "px";
+    	// mycanvas.style.height = 500 + "px";
+
+    	// ctx.scale(2, 2);
 
     	var i = 0;
 
@@ -61,10 +64,10 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 				if (i < scope.character.limbs.length) {
 					generateImgs();
 				} else {
-					ctx.fillStyle = '#00a984';
+					ctx.fillStyle = '#0f1c3a';
 					ctx.textAlign="center"; 
-					ctx.font = "50px helvetica";
-					ctx.fillText(scope.character.name, 160, 380);
+					ctx.font = "24px abadi_extra_bold";
+					ctx.fillText(scope.character.name, 160, 485);
 
 					convertToDataUrl();
 				}
@@ -81,7 +84,7 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 
 			DisplayService.storeImageData(dataURL);
 
-			//document.getElementById('link').innerHTML = '<a download="test.png" href="'+dataURL+'">download</a>'
+			document.getElementById('link').innerHTML = '<a download="test.png" href="'+dataURL+'">download</a>'
 		}
 	}
 }])

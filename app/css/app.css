@@ -106,28 +106,23 @@ input {
 }
 
 
-
+.sl-section {
+	width: 100%;
+	background-size: auto 100%;
+	position: relative;
+	margin-bottom: 40px
+}
 #sl-design-section {
-	width: 100%;
-	height:725px;
-	background-image: url(../img/bg.jpg);
-	background-size: auto 100%;
-	position: relative;
+	height:701px;
+	background-image: url(../img/bg_build.jpg);
 }
-
 #sl-gallery-section {
-	width: 100%;
-	height:725px;
-	background-size: auto 100%;
-	position: relative;
+	height:659px;
+	background-image: url(../img/bg_gallery.jpg);
 }
-
 #sl-products-section {
-	width: 100%;
 	height:725px;
-	background-image: url(../img/bg.jpg);
-	background-size: auto 100%;
-	position: relative;
+	background-image: url(../img/bg_products.jpg);
 }
 
 
@@ -137,7 +132,7 @@ input {
 	background-color: #f2f8ff;
 	position: absolute;
     top: 20px;
-    left: 60px;
+    left: 40px;
 	border-radius: 5px;
 }
 #sl-display-artboard {
@@ -147,6 +142,17 @@ input {
 }
 .sl-disable {
 	pointer-events:none;
+}
+#sl-logo {
+	width:155px;
+	height:78px;
+	background-image: url(../img/logo.png);
+	position: absolute;
+	z-index: 0;
+	left: 50%;
+	top:0px;
+	margin-left: -77px;
+
 }
 .sl-limb {
 	background-size: 100%;
