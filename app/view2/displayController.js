@@ -200,7 +200,7 @@ myApp.directive("bodyPart", ['$timeout', function ($timeout) {
     	},
     	link: function(scope, element, attr) {
 
-   			element[0].style.backgroundImage = 'url(assets/'+scope.part.image+')';
+   			element[0].style.backgroundImage = 'url(assets/'+scope.part.type+'/'+scope.part.image+')';
    			element[0].style.width = scope.part.width+'px';
    			element[0].style.height = scope.part.height+'px';
    			element[0].style.left = scope.part.left+'px';

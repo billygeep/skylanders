@@ -98,7 +98,7 @@ myApp.directive("menuButton", [ '$timeout', function ($timeout) {
       		index: '@'
     	},
     	link: function(scope, element, attr) {
-   			element[0].style.backgroundImage = 'url(assets/'+scope.button.image+')';
+   			element[0].style.backgroundImage = 'url(assets/'+scope.button.type+'/'+scope.button.image+')';
 
    			$timeout(function() {
    				element[0].style['-webkit-transform'] = 'scale3d(1,1,1)';

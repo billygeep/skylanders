@@ -8,7 +8,6 @@ myApp.controller('CanvasController', [ '$scope', 'NotifyingService', 'DisplaySer
 	NotifyingService.subscribe($scope, 'create-character-event', function somethingChanged() {
     	
     	$scope.character = DisplayService.returnCharacter();
-
     	$scope.populateCanvas();
     });
 }]);
@@ -36,8 +35,16 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
     	var i = 0;
 
 		scope.populateCanvas = function() {
-			i = 0;
-			generateImgs();
+
+			var logoImg = new Image();
+
+			logoImg.onload = function(){
+
+				i = 0;
+				ctx.drawImage( logoImg, 82, 0 );
+				generateImgs();
+			}
+			logoImg.src = "img/logo.png"; 
 		}
   
 		function generateImgs() {
@@ -67,13 +74,13 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 					ctx.fillStyle = '#0f1c3a';
 					ctx.textAlign="center"; 
 					ctx.font = "24px abadi_extra_bold";
-					ctx.fillText(scope.character.name, 160, 485);
+					ctx.fillText(scope.character.name.toUpperCase(), 160, 485);
 
 					convertToDataUrl();
 				}
 			}
 
-			imageObj.src = "assets/" + scope.character.limbs[i].image; 
+			imageObj.src = "assets/"+scope.character.limbs[i].type+'/'+scope.character.limbs[i].image; 
 		}
 
 
