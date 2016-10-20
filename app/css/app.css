@@ -16,8 +16,13 @@
 body {
 	background-color: black;
 	font-family: 'abadi_extra_bold';
+	background-image: url(../img/bg_skin.jpg);
+	background-size: 100%;
 }
-
+h3 {
+	font-size: 24px;
+	margin-bottom: 0;
+}
 h4 {
 	margin:10px 0;
 }
@@ -110,19 +115,28 @@ input {
 	width: 100%;
 	background-size: auto 100%;
 	position: relative;
-	margin-bottom: 40px
+	margin-bottom: 40px;
+	color:#fff;
 }
 #sl-design-section {
 	height:701px;
 	background-image: url(../img/bg_build.jpg);
 }
 #sl-gallery-section {
-	height:659px;
+	height:680px;
 	background-image: url(../img/bg_gallery.jpg);
+	text-align: center;
+	padding: 50px 25px 0;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box;
 }
 #sl-products-section {
-	height:725px;
+	height:634px;
 	background-image: url(../img/bg_products.jpg);
+	text-align: center;
+	padding: 50px 25px 0;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box;
 }
 
 
@@ -134,6 +148,7 @@ input {
     top: 20px;
     left: 40px;
 	border-radius: 5px;
+	color: #0f1c3a;
 }
 #sl-display-artboard {
 	width:100%;
@@ -290,6 +305,9 @@ input {
 
 
 .sl-input-row {
+	margin-top: 25px;
+}
+.sl-input-row-lowmargin {
 	margin-top: 10px;
 }
 .sl-display-button:active {
@@ -333,7 +351,7 @@ input {
 	height:62px;
 	position: relative;
 	text-align: center;
-	margin-top: 10px;
+	margin-top: 25px;
 }
 .sl-menu-row-parts {
 	height:372px;
@@ -407,10 +425,16 @@ input {
 	background-repeat: no-repeat;
 }
 #sl-title-build {
-	background-image: url(../img/title_build.png)
+	background-image: url(../img/title_build.png);
 }
 #sl-title-enter {
-	background-image: url(../img/title_enter.png)
+	background-image: url(../img/title_enter.png);
+}
+#sl-title-gallery {
+	background-image: url(../img/title_gallery.png);
+}
+#sl-title-products {
+	background-image: url(../img/title_products.png);
 }
 
 
@@ -418,4 +442,48 @@ input {
 .sl-bodypart {
 	background-size: 100%;
 	position: absolute;
+}
+
+
+
+#sl-gallery {
+	width:100%;
+	text-align: center;
+	position: relative;
+	margin-top: 30px;
+
+}
+.sl-gallery-image {
+	width:27%;
+	height:auto;
+	background-color: #fff;
+	display: inline-block;
+	margin: 0 2%;
+	overflow: hidden;
+	border-radius: 5px;
+}
+.sl-gallery-image img {
+	width:100%;
+	height:auto;
+}
+
+
+
+
+#sl-products {
+	width: 808px;
+	height:392px;
+	background-image: url(../img/products.png);
+	background-size: 100%;
+	background-repeat: no-repeat;
+	margin:30px auto 0;
+	position: relative;
+	border-radius: 5px;
+}
+#sl-product-button {
+	position: absolute;
+	width: 140px;
+	left:50%;
+	margin-left: -70px;
+	bottom:-20px;
 }

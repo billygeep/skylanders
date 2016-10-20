@@ -26,12 +26,12 @@
 
 					<div id="sl-display-controls-2" class="sl-display-controls">
 
-						<div class="sl-input-row">
+						<div class="sl-input-row-lowmargin">
 							<span>NAME YOUR MASCOT</span>
 							<span><input id="sl-input-name" name="name" maxlength="20"/></span>
 						</div>
 
-						<div class="sl-input-row">
+						<div class="sl-input-row-lowmargin">
 							<span>SELECT YOUR TEAM</span>
 							<span>
 								<select id="sl-input-team">
@@ -105,6 +105,33 @@
 
 	<div id="sl-gallery-section" class="sl-section">
 
+		<div class="sl-title" id="sl-title-gallery"></div>
+
+		<h3>CHECK OUT THE LATEST ENTRIES</h3>
+		<div class="sl-input-row-lowmargin">
+							<span>Filter by</span>
+							<span>
+								<select id="sl-input-team">
+									<option value="0" selected="selected">Select a team</option>
+									<option value="1">Arsenal</option>
+									<option value="2">Aston Villa</option>
+									<option value="3">Chelsea</option>
+									<option value="4">Wimbledon</option>
+								</select>
+							</span>
+						</div>
+		<div id="sl-gallery">
+			<div class="sl-gallery-image"><img src="assets/test.png" /></div>
+			<div class="sl-gallery-image"><img src="assets/test.png" /></div>
+			<div class="sl-gallery-image"><img src="assets/test.png" /></div>
+
+		</div>
+
+		<div class="sl-input-row">
+					<button class="sl-button-arrow"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0" ng-class=" { 'sl-button-inactive' : menudata.currentpage == 0 } "></button>
+					<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
+					<button id="sl-button-down" class="sl-button-arrow"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1" ng-class=" { 'sl-button-inactive' : menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1} "></button>
+				</div>
 	</div>
 
 
@@ -113,6 +140,14 @@
 <section>
 
 	<div id="sl-products-section" class="sl-section">
+
+		<div class="sl-title" id="sl-title-products"></div>
+
+		<h3>CHECK OUT OUR RANGE OF SKYLANDER PRODUCTS</h3>
+
+		<div id="sl-products">
+			<div class="sl-display-button" id="sl-product-button">VIEW FULL RANGE</div>
+		</div>
 
 	</div>
 
