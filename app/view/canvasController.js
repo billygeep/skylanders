@@ -36,15 +36,17 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 
 		scope.populateCanvas = function() {
 
-			var logoImg = new Image();
+			// var logoImg = new Image();
 
-			logoImg.onload = function(){
+			// logoImg.onload = function(){
 
-				i = 0;
-				ctx.drawImage( logoImg, 82, 0 );
-				generateImgs();
-			}
-			logoImg.src = "img/logo.png"; 
+			// 	i = 0;
+			// 	ctx.drawImage( logoImg, 82, 0 );
+			// 	generateImgs();
+			// }
+			// logoImg.src = "img/logo.png"; 
+
+			generateImgs();
 		}
   
 		function generateImgs() {
@@ -74,7 +76,7 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 					ctx.fillStyle = '#0f1c3a';
 					ctx.textAlign="center"; 
 					ctx.font = "24px abadi_extra_bold";
-					ctx.fillText(scope.character.name.toUpperCase(), 160, 485);
+					ctx.fillText(scope.character.name.toUpperCase(), 160, 480);
 
 					convertToDataUrl();
 				}

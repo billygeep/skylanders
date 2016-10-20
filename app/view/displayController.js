@@ -1,6 +1,15 @@
 'use strict';
 
-myApp.controller('View2Ctrl', [ '$scope', '$timeout', 'dataService', function($scope, $timeout, dataService) {
+myApp.controller('BuildController', [ '$scope', '$timeout', 'dataService', 'NotifyingService', function($scope, $timeout, dataService, NotifyingService) {
+
+	$scope.build = {
+		comp : false
+	}
+
+	//subscribe to event to listen for competition / menu change
+	NotifyingService.subscribe($scope, 'toggle-view-event', function somethingChanged() {
+		$scope.build.comp = ($scope.build.comp === false) ? true : false;
+    });	
 
 }]);
 

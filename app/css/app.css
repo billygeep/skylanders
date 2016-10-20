@@ -12,7 +12,6 @@
 
 
 
-
 body {
 	background-color: black;
 	font-family: 'abadi_extra_bold';
@@ -21,7 +20,7 @@ body {
 }
 h3 {
 	font-size: 24px;
-	margin-bottom: 0;
+	margin: 15px 0 0;
 }
 h4 {
 	margin:10px 0;
@@ -121,6 +120,11 @@ input {
 #sl-design-section {
 	height:701px;
 	background-image: url(../img/bg_build.jpg);
+	transition:0.3s ease-in-out;
+	-webkit-transition:0.3s ease-in-out;
+}
+.sl-comp-section {
+	background-image: url(../img/bg_comp.jpg)!important;
 }
 #sl-gallery-section {
 	height:680px;
@@ -145,7 +149,7 @@ input {
 /*	height:600px;*/
 	background-color: #f2f8ff;
 	position: absolute;
-    top: 20px;
+    top: 50px;
     left: 40px;
 	border-radius: 5px;
 	color: #0f1c3a;
@@ -165,7 +169,7 @@ input {
 	position: absolute;
 	z-index: 0;
 	left: 50%;
-	top:0px;
+	top:-40px;
 	margin-left: -77px;
 
 }
@@ -270,11 +274,11 @@ input {
 
 #sl-display-button-holder {
 	position: absolute;
-	bottom:-15px;
+	bottom:-18px;
 	width: 100%;
 	text-align: center;
 }
-.sl-display-button {
+.sl-display-button, .submitButton {
 	width: 80px;
 	height:34px;
 	color: #fff;
@@ -284,6 +288,7 @@ input {
 	text-align: center;
 	cursor: pointer;
 	display: inline-block;
+	padding:0;
 }
 .sl-button-inactive {
 
@@ -321,21 +326,21 @@ input {
 
 
 #sl-right-container {
-	width:372px;
+	width:500px;
 	height:600px;
 /*	background-color: #999;*/
 	position: absolute;
 	right:20px;
-	top:20px;
+	top:50px;
 	overflow:hidden;
 }
 
 #sl-menu-container {
-	width:100%;
+	width:372px;
 	height:auto;
 	position: absolute;
 	right:0;
-	top:0;
+	top:0px;
 	overflow:hidden;
 }
 .sl-menu-hide {
@@ -351,7 +356,7 @@ input {
 	height:62px;
 	position: relative;
 	text-align: center;
-	margin-top: 25px;
+	margin-top: 20px;
 }
 .sl-menu-row-parts {
 	height:372px;
@@ -429,6 +434,7 @@ input {
 }
 #sl-title-enter {
 	background-image: url(../img/title_enter.png);
+	background-position: left;
 }
 #sl-title-gallery {
 	background-image: url(../img/title_gallery.png);
@@ -486,4 +492,71 @@ input {
 	left:50%;
 	margin-left: -70px;
 	bottom:-20px;
+}
+
+
+
+#funnelSM4 .input-text[type="text"] {
+	height:20px;
+	border:0;
+	width: 48%;
+	padding:0;
+	display: inline-block;
+	vertical-align: top;
+    border-radius: 5px;
+    text-indent: 5px;
+}
+#funnelSM4 {
+	content: #fff;
+}
+.flux4 .primaryTextBoldBody {
+	width: 48%;
+	display: inline-block;
+	color: #fff;
+	text-indent: 10px;
+}
+.flux4 select.dropdown {
+	width: 15%;
+}
+.flux4 .required {
+	padding:0;
+}
+#funnelSM4 .questionItem .answerOptionText {
+   float:none;
+}
+
+#funnelSM4 .answerOptionText {
+	color: #db8800;
+}
+
+#funnelSM4 ol.questions, #funnelSM4 ol.processors, #funnelSM4 ol.results, #funnelSM4 ol.errors {
+    margin-top: 15px;
+}
+.flux4 .primaryButton {
+	padding:0;
+	background: #db8800!important;
+	border:1px solid #fff;
+	text-align: center;
+	line-height: 34px;
+	text-transform: uppercase;
+	font-family: 'abadi_extra_bold';
+	font-size: 16px;
+    width: 140px;
+}
+.flux4 .primaryButton:hover {
+	background-color: #fff!important;
+	border:1px solid #0f1c3a;
+	color: #0f1c3a;
+}
+.flux4 .primaryButton:active {
+	box-shadow: inset 1px 1px 3px rgba(0,0,0,0.2)
+}
+#funnelSM4 .answerOptionText.selected {
+	color: #fff;
+}
+#funnelSM4 .answerOptionText:hover, #funnelSM4 .questionItem:hover {
+	background-color: transparent;
+}
+#funnelSM4 span.field-validation-error {
+	display: none;
 }

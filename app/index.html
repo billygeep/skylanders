@@ -45,39 +45,28 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="app.js"></script>
 <script src="js/services.js"></script>
-<script src="view1/view1.js"></script>
-<script src="view2/displayController.js"></script>
-<script src="view2/menuController.js"></script>
-<script src="view2/canvasController.js"></script>
+<script src="view/displayController.js"></script>
+<script src="view/menuController.js"></script>
+<script src="view/canvasController.js"></script>
 <script src="components/version/version.js"></script>
 <script src="components/version/version-directive.js"></script>
 <script src="components/version/interpolate-filter.js"></script>
 
+
   <script src="http://widgets4.flux.com/Core" type="text/javascript" id="10BBFFFF027BE8020002FFFFBB10"></script>
-
-  <script type="text/javascript">
-    Flux4.createWidget("Funnel", {
-        siteName: "nick.co.uk",
-        containerId: 'sl-funnel',
-        collectionAlias: "the-bfg",
-        submitText: "Submit",
-        messages: {
-            pending: "Sorry, we're not accepting submissions yet.",
-            expired: "Sorry, submissions are closed.",
-            success: "Thanks for your submission!",
-            collectionNotFound: "Sorry, collection not found. Please contact Funnel admin."
-        }
-    }, function(){
-        Flux4.addEventListener('entryAccepted', function (method, contentUri, profileName, eventName, callbackData, widgetsStack) {
-            var event = new Event('entry_callback');
-            document.dispatchEvent(event);
-        });
-
-        /*Flux4.addEventListener('entryRejected', function (method, contentUri, profileName, eventName, callbackData, widgetsStack) {
-            var event = new Event('entry_callback');
-            document.dispatchEvent(event);
-        });*/
-    });
+<script type="text/javascript">
+Flux4.createWidget("Funnel", {
+  siteName: "nick.co.uk",
+  containerId: 'sl-funnel',
+  collectionAlias: "nick_kicks_skylanders",
+  submitText: "Submit", 
+  messages: {   
+    pending: "Sorry, we're not accepting submissions yet.", 
+    expired: "Sorry, submissions are closed.", 
+    success: "Thanks for your submission!", 
+    collectionNotFound: "Sorry, collection not found. Please contact Funnel admin."  
+  } 
+});
 </script>
 
 </body>
