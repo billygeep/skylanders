@@ -16,7 +16,7 @@ body {
 	background-color: black;
 	font-family: 'abadi_extra_bold';
 	background-image: url(../img/bg_skin.jpg);
-	background-size: 100%;
+	background-size: cover;
 }
 h3 {
 	font-size: 24px;
@@ -189,6 +189,7 @@ input {
 	background-position: center;
 	transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 	-webkit-transition:0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+	border:none;
 }
 .sl-limb-selected {
 	border-radius: 5px;
@@ -559,4 +560,10 @@ input {
 }
 #funnelSM4 span.field-validation-error {
 	display: none;
+}
+#funnelSM4 li:hover>.answerOptionText {
+	background-color: transparent;
+	color: #fff;
+} {
+	background-color: #c10000;
 }

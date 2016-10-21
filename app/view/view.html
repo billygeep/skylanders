@@ -9,7 +9,7 @@
 
 				<div id="sl-logo"></div>
 
-				<div body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } "></div>
+				<img body-part draggable ng-repeat="limb in bodyparts.limbs" ng-style=" { '-webkit-transform' : 'rotateZ('+limb.rotation+'deg)' } " class="sl-limb" part="limb" bodyparts="bodyparts" ng-class=" { 'sl-limb-selected' : limb.selected == 1 } " />
 
 				<div id="sl-warning" ng-class=" { 'sl-show' : bodyparts.warningswitch == 1 } ">{{bodyparts.warning}}</div>
 			</div>
@@ -126,9 +126,7 @@
 		</div>
 
 		<div class="sl-input-row">
-			<button class="sl-button-arrow"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0" ng-class=" { 'sl-button-inactive' : menudata.currentpage == 0 } "></button>
-			<div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div>
-			<button id="sl-button-down" class="sl-button-arrow"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1" ng-class=" { 'sl-button-inactive' : menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1} "></button>
+			<button class="sl-button-arrow"  ng-click="swipeMenu(0)" ng-disabled="menudata.currentpage == 0" ng-class=" { 'sl-button-inactive' : menudata.currentpage == 0 } "></button><div class="sl-button">{{menudata.currentpage+1}}/{{numberOfPages()}}</div><button id="sl-button-down" class="sl-button-arrow"  ng-click="swipeMenu(1)" ng-disabled="menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1" ng-class=" { 'sl-button-inactive' : menudata.currentpage >= menudata.currentmenu.length/menudata.pagesize - 1} "></button>
 		</div>
 	</div>
 

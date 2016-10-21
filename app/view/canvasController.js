@@ -56,8 +56,8 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 			//onload create the text for the image
 			imageObj.onload = function(){
 
-				var w = scope.character.limbs[i].width,
-					h = scope.character.limbs[i].height,
+				var w = imageObj.width,
+					h = imageObj.height,
 					x = scope.character.limbs[i].left,
 					y = scope.character.limbs[i].top,
 					r = scope.character.limbs[i].rotation
