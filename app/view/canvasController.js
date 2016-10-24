@@ -87,7 +87,7 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 
 
 		function convertToDataUrl() {
-			log('CONVERT TO BASE');
+
 			var dataURL = mycanvas.toDataURL('image/png');
 			//log(dataURL)
 
@@ -101,10 +101,7 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 		}
 
 		function savePhoto(imgsrc) {
-			var crsf_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
-			    
-
-			    var crsf_value = '<?php echo $this->security->get_csrf_hash(); ?>';
+			
                // console.log("final", imgsrc);
                 var dataobj = { "imgBase64": imgsrc};
                 dataobj[crsf_name.toString()] = crsf_value;
@@ -131,9 +128,12 @@ log(dataobj)
                     dataType: "json",
                     data: dataobj,
                     success: function (msg) {
+
+log()
+
                         if (msg.success === true) {
                             photo_id = msg.id;
-                            log('DO')
+                      	log(photo_id)
                             // $("#competitionPrimary").show();
                             // $("input[name=id]").closest('li').hide();
                             // $(".answerOptionText:eq(3)").html('I have read and agreed to the competition <a href="http://dohvinci-slimefest.co.uk/docs/dohvinci_nickelodeon_terms.pdf" target="_blank">terms and conditions</a>');

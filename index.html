@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -20,6 +22,8 @@
 
 <script type="text/javascript">
     var base_url = 'app/'
+    var crsf_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+    var crsf_value = '<?php echo $this->security->get_csrf_hash(); ?>';
 </script>
 
 
