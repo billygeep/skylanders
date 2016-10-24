@@ -82,7 +82,7 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 				}
 			}
 
-			imageObj.src = "assets/"+scope.character.limbs[i].type+'/'+scope.character.limbs[i].image; 
+			imageObj.src = base_url+"assets/"+scope.character.limbs[i].type+'/'+scope.character.limbs[i].image; 
 		}
 
 
@@ -93,8 +93,114 @@ myApp.directive("characterCreator", [ 'DisplayService', function (DisplayService
 
 			DisplayService.storeImageData(dataURL);
 
-			document.getElementById('link').innerHTML = '<a download="test.png" href="'+dataURL+'">download</a>'
+			//document.getElementById('link').innerHTML = '<a download="test.png" href="'+dataURL+'">download</a>'
+
+			var photo_id = Math.random()*1000000000
+
+			savePhoto(dataURL, 'JOSH');
 		}
+
+		function savePhoto(imgsrc) {
+			var crsf_name = '<?php echo $this->security->get_csrf_token_name(); ?>';
+			    
+
+			    var crsf_value = '<?php echo $this->security->get_csrf_hash(); ?>';
+               // console.log("final", imgsrc);
+                var dataobj = { "imgBase64": imgsrc};
+                dataobj[crsf_name.toString()] = crsf_value;
+log(dataobj)
+
+// 				var xhr = new XMLHttpRequest();
+
+// 				xhr.open('POST', "submitphoto");
+// 				xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+// 				xhr.onload = function() {
+// 				    if (xhr.status === 200) {
+// 				        alert('Something went right')
+// 				    }
+// 				    else if (xhr.status !== 200) {
+// 				        alert('Request failed.  Returned status of ' + xhr.status);
+// 				    }
+// 				};
+// 				xhr.send(encodeURI('data=' + dataobj));
+
+                //console.log("obj", dataobj);
+                $.ajax({
+                    type: "POST",
+                    url: "submitphoto",
+                    dataType: "json",
+                    data: dataobj,
+                    success: function (msg) {
+                        if (msg.success === true) {
+                            photo_id = msg.id;
+                            log('DO')
+                            // $("#competitionPrimary").show();
+                            // $("input[name=id]").closest('li').hide();
+                            // $(".answerOptionText:eq(3)").html('I have read and agreed to the competition <a href="http://dohvinci-slimefest.co.uk/docs/dohvinci_nickelodeon_terms.pdf" target="_blank">terms and conditions</a>');
+                            // $("input[name=id]").val(photo_id);
+                            // $('div.funnel').on('click', 'a.submitButton', function (e) {
+                            //     console.log(photo_id);
+                            //     addToGallery(photo_id);
+                            // });
+
+                        }
+
+                    }
+                });
+            }
+
+		function addToGallery(_photo_id, _show) {
+
+		    var photo_id = _photo_id
+		    var show = _show;
+
+		   var result = '' //$('.pollIsClosed').text().trim();
+		   //Thanks for your submission! After successful moderation you will be able to view your painting in the gallery, or through the link below
+		   if (result == '') {
+		        console.log(result); 
+
+		        var xhr = new XMLHttpRequest();
+				xhr.open('POST', '/galleryfeed/?offset=0');
+				xhr.send( { photo_key: photo_id, photo_show : show } );
+
+				// var oReq = new XMLHttpRequest();
+				// oReq.onload = function (e) {
+				//     results.innerHTML = e.target.response.message;
+				// };
+				// oReq.open('GET', e.target.dataset.url + '?' + new Date().getTime(), true);
+				// oReq.responseType = 'json';
+				// oReq.send();
+
+				xhr.onreadystatechange = function () {
+				  var DONE = 4; // readyState 4 means the request is done.
+				  var OK = 200; // status 200 is a successful return.
+				  if (xhr.readyState === DONE) {
+				    if (xhr.status === OK) {
+				      console.log(xhr.responseText); // 'This is the returned text.'
+				    } else {
+				      console.log('Error: ' + xhr.status); // An error occurred during the request.
+				    }
+				  }
+				};
+
+		        // $.ajax({
+		        //     type: 'POST',
+		        //     dataType: 'json',
+		        //     url: base_url+'gallery-add',
+		        //     data: { photo_key: photo_id, photo_show : show }, 
+		        //     success: function ( data ) {
+		        //        // window.location.href = base_url + '#!/gallery/'+photo_id;
+		        //     }
+		        // });
+
+		    } else {
+		        setTimeout(function(){
+		            addToGallery(photo_id, show);
+		        },1000);        
+		        console.log('try again');      
+		    }
+		                                    
+}
 	}
 }])
 
